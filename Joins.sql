@@ -46,3 +46,10 @@ ORDER BY title
 /* UNION */
 /* Combine two select statements from two tables
 /* Must have same number of columns and the columns must be the same data type */
+
+SELECT actor.actor_id as id, first_name, last_name, COUNT(title) as total_movies
+FROM actor
+JOIN film_actor ON film_actor.actor_id = actor.actor_id
+JOIN film ON film.film_id = film_actor.film_id
+GROUP BY actor.actor_id
+ORDER BY total_movies DESC
